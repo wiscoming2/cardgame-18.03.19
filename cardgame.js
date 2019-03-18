@@ -20,35 +20,28 @@
             var myscore = 0
             var pcscore = 0
             var cards = ["2.png" , "3.png" , "4.png" , "5.png" , "6.png" , "7.png" , "8.png" , "9.png" , "J.png" , "Q.png" , "K.png" , "A.png"]
-            var mycard = Math.floor(Math.random()*13)
-            var pccard = Math.floor(Math.random()*13)
             function draw()
             {
+                if(myscore < 5 && pcscore < 5)
+                {
+                var mycard = Math.floor(Math.random()*13)
+                var pccard = Math.floor(Math.random()*13)
                 $("#mycardimg").attr("src" , cards[mycard])
                 $("#pccardimg").attr("src" , cards[pccard])
-                while(myscore < 5 && pcscore < 5)
+                if(mycard > pccard)
                 {
-                    if(mycard > pccard)
-                    {
-                        myscore++
-                    }
-                    else if(mycard < pccard)
-                    {
-                        pcscore++
-                    }
-                    mycard = Math.floor(Math.random()*13)
-                    pccard = Math.floor(Math.random()*13)
-                    $("#myscore").text(myscore)
-                    $("#PCscore").text(pcscore)
+                  myscore++
                 }
-                if($("#myscore").val() > $("#PCscore").val())
+               else
+                 if(mycard < pccard)
                 {
-                    $("#winner").text("i win")
+                    pcscore++
                 }
-                else
-                {
-                    $("#winner").text("PC win")
+                $('#myscore').text(myscore)
+                $('#PCscore').text(pcscore)
                 }
+           
+
             }
         </script>
     </body>
